@@ -1,0 +1,92 @@
+<mat-card class="login-page">
+    <mat-card-title>Restaurant</mat-card-title>
+
+<mat-card-content>
+
+<form class="login-form data-form" [formGroup]="menuList" (ngSubmit)="menuForm(menuList)"> 
+
+    <!-- Input  -->
+    <mat-form-field>                    
+        <input matInput type="text" name="dishName" placeholder="DishName" formControlName="dishName">
+    </mat-form-field>
+
+    <!-- category -->
+    <mat-form-field appearance="outline">       
+        <mat-select placeholder="Dish Type" formControlName="category"> 
+            <mat-option value="breakfast" >Breakfast</mat-option>
+            <mat-option value="lunch" >Lunch</mat-option>
+            <mat-option value="dinner" >Dinner</mat-option>              
+        </mat-select>
+    </mat-form-field>
+
+    <!-- tags -->
+    <mat-form-field appearance="outline">    
+        <mat-select placeholder="Type" formControlName="tags" >
+            <mat-option value="Veg">Veg</mat-option>
+            <mat-option value="Nonveg">Nonveg</mat-option>                              
+        </mat-select>
+    </mat-form-field>
+
+    <!-- nested form array with form group -->
+    <div formArrayName="size"> 
+        <span>Size</span>       
+        <button mat-stroked-button color="primary" class="table-Button" type="button"  >Add Size</button>
+        <button mat-stroked-button color="warn" type="button" >Remove Size </button>
+        
+        <table cellspacing="0"> 
+            
+             <tr *ngFor="let sizeVal of size.controls; let i = index" [formGroupName]="i"> 
+                <td>
+                    <mat-form-field >
+                    <input matInput placeholder="Type" formControlName="type"/>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field >
+                    <input matInput placeholder="Price"  formControlName="price"/>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                    <input matInput placeholder="Qty" formControlName="qty"/>
+                    </mat-form-field>
+                </td>
+        
+                <td>
+                    <button mat-stroked-button color="warn" type="button"> Remove Last item </button>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+
+        <!-- upload file -->
+        <div class="image">
+            <input type="file" formControlName = "dishImage">            
+        </div>
+        
+        
+        <!-- upload multiple file -->
+        <div class="image">
+            <input type="file" multiple formControlName = "dishImageGallery">            
+        </div>
+
+        <!-- <div formArrayName="dishImageGallery">  
+                        
+            <div *ngFor="let ImageGallery of dishImageGallery.controls; let i = index">
+                <input type="file" placeholder="ImageGallery {{ i + 1 }}" [formControlName]="i">
+            </div>
+        </div>  -->
+
+
+<!-- submit -->
+<div class="form-element">
+<button mat-raised-button color="primary" type="submit" class="button">Submit</button>
+</div><!-- submit end-->
+    
+
+</form>
+
+</mat-card-content>
+</mat-card>
+

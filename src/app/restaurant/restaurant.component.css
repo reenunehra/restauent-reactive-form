@@ -1,0 +1,41 @@
+.login-page {
+  max-width: 700px;
+  margin: 50px auto 0 auto;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.test-input {
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+
+/* table */
+.fill-remaining-space {  
+  flex: 1 1 auto;
+}
+
+/* .button {
+  width: 100%;
+} */
+
+.full-width {
+  width: 50%;
+}
+
+.table-Button{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+td {
+  padding-right: 3px;
+}
+
+.image {  
+  margin-bottom: 10px;
+}
