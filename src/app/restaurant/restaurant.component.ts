@@ -18,7 +18,6 @@ export class RestaurantComponent implements OnInit {
 
   menuList : any;
   postData : any = {};
-  // selectedFile: File = null;
 
   constructor(private formBuilder : FormBuilder, private myServices : MyserviceService ) { }
 
@@ -84,10 +83,38 @@ export class RestaurantComponent implements OnInit {
     form.submitted = false
     }
     
+// add new form group to size array
+    addMenuField(){
+      let control = <FormArray>this.menuList.controls.size;
+      control.push(
+        this.formBuilder.group({          // array of object     
+          type:['',Validators.required], // '' this is for default value in input field
+          price:['',Validators.required],
+          qty:['',Validators.required]
+        })
+      );
+    }  
+
+    removeMenuField(index: any = 0){
+      let control = <FormArray>this.menuList.controls.size;
+      control.removeAt(index);
+    }
 
 // ----------------------------------------------
     get size() {
       return this.menuList.get('size') as FormArray;
+    }
+
+    get type(){
+      return this.size.get('type');
+    }
+
+    get price(){
+      return this.size.get('price');
+    }
+
+    get qty(){
+      return this.size.get('qty');
     }
 
     get dishImageGallery() {

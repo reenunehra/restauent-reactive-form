@@ -1,8 +1,7 @@
 <mat-card class="login-page">
-    <mat-card-title>Restaurant</mat-card-title>
+    <mat-card-title class="title">Restaurant Form</mat-card-title>
 
 <mat-card-content>
-
 <form class="login-form data-form" [formGroup]="menuList" (ngSubmit)="menuForm(menuList)"> 
 
     <!-- Input  -->
@@ -30,8 +29,8 @@
     <!-- nested form array with form group -->
     <div formArrayName="size"> 
         <span>Size</span>       
-        <button mat-stroked-button color="primary" class="table-Button" type="button"  >Add Size</button>
-        <button mat-stroked-button color="warn" type="button" >Remove Size </button>
+        <button mat-stroked-button color="primary" class="table-Button" type="button" (click)="addMenuField()" >Add Size</button>
+        <button mat-stroked-button color="warn" type="button" (click)="removeMenuField()" >Remove Size </button>
         
         <table cellspacing="0"> 
             
@@ -53,7 +52,7 @@
                 </td>
         
                 <td>
-                    <button mat-stroked-button color="warn" type="button"> Remove Last item </button>
+                    <button mat-stroked-button color="warn" type="button" (click)="removeMenuField(i)"> Remove Last item </button>
                 </td>
             </tr>
         </table>
@@ -69,24 +68,17 @@
         <!-- upload multiple file -->
         <div class="image">
             <input type="file" multiple formControlName = "dishImageGallery">            
-        </div>
-
-        <!-- <div formArrayName="dishImageGallery">  
-                        
-            <div *ngFor="let ImageGallery of dishImageGallery.controls; let i = index">
-                <input type="file" placeholder="ImageGallery {{ i + 1 }}" [formControlName]="i">
-            </div>
-        </div>  -->
+        </div>       
 
 
-<!-- submit -->
-<div class="form-element">
-<button mat-raised-button color="primary" type="submit" class="button">Submit</button>
-</div><!-- submit end-->
-    
+        <!-- submit -->
+        <div class="form-element">
+            <button mat-raised-button color="primary" type="submit" class="button">Submit</button>
+        </div><!-- submit end-->    
 
 </form>
-
 </mat-card-content>
 </mat-card>
+
+
 
